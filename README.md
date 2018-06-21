@@ -3,36 +3,30 @@ create-dmg
 
 A shell script to build fancy DMGs.  
 
+This is a project fork of andreyvit's create-dmg project at <https://github.com/andreyvit/create-dmg>, modified to support [Octave.app](https://github.com/octave-app)'s needs. It has diverged from upstream, and we don't expect our changes to make it back upstream, since there has been no activity on the project since 2015.
 
-Status and contribution policy
-------------------------------
+## Status and contribution policy
 
-This project is maintained thanks to the contributors who send pull requests. The original author has no use for the project, so his only role is reviewing and merging pull requests.
+This project is maintained by the Octave.app group, primarily for our own internal use. Contributions are welcome, but we don't primarily maintain this
 
-I will merge any pull request that adds something useful and does not break existing things.
+## Installation
 
-Starting in January 2015, everyone who gets a pull request merged gets commit access to the repository.
-  
-  
-Installation
-------------
-  
-By being a shell script, yoursway-create-dmg installation is very simple. Simply download and run.  
-  
-> git clone https://github.com/andreyvit/yoursway-create-dmg.git  
-> cd yoursway-create-dmg  
-> ./create-dmg [options]  
-  
-  
-Usage
------
-  
+Create-dmg is a shell script. Simply download and run on any Mac.
+
+```shell
+git clone https://github.com/octave-app/create-dmg.git
+cd create-dmg
+./create-dmg [options]  
+```  
+
+## Usage
+
 > create-dmg [options...] [output\_name.dmg] [source\_folder]  
 
 All contents of source\_folder will be copied into the disk image.  
-  
-**Options:**  
-  
+
+#### Options
+
 *   **--volname [name]:** set volume name (displayed in the Finder sidebar and window title)  
 *   **--volicon [icon.icns]:** set volume icon    
 *   **--background [pic.png]:** set folder background image (provide png, gif, jpg)    
@@ -50,29 +44,29 @@ All contents of source\_folder will be copied into the disk image.
 *   **--disk-image-size [x]:** set the disk image size manually to x MB    
 *   **--version:** show tool version number    
 *   **-h, --help:** display the help  
-  
-  
-Example
--------
-  
-> \#!/bin/sh  
-> test -f Application-Installer.dmg && rm Application-Installer.dmg  
-> create-dmg \  
-> --volname "Application Installer" \  
-> --volicon "application\_icon.icns" \  
-> --background "installer\_background.png" \  
-> --window-pos 200 120 \  
-> --window-size 800 400 \  
-> --icon-size 100 \  
-> --icon Application.app 200 190 \  
-> --hide-extension Application.app \  
-> --app-drop-link 600 185 \  
-> Application-Installer.dmg \  
-> source\_folder/  
 
 
-Alternatives
-------------
+##  Example
+
+```shell
+#!/bin/ss
+test -f Application-Installer.dmg && rm Application-Installer.dmg  
+create-dmg \  
+  --volname "Application Installer" \  
+  --volicon "application\_icon.icns" \  
+  --background "installer\_background.png" \  
+  --window-pos 200 120 \  
+  --window-size 800 400 \  
+  --icon-size 100 \  
+  --icon Application.app 200 190 \  
+  --hide-extension Application.app \  
+  --app-drop-link 600 185 \  
+  Application-Installer.dmg \  
+  source\_folder/
+```
+
+
+## Other DMG-building projects
 
 * [node-appdmg](https://github.com/LinusU/node-appdmg)
 * [dmgbuild](https://pypi.python.org/pypi/dmgbuild)
