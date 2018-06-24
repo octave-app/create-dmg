@@ -202,7 +202,7 @@ if ! test -z "$ADD_FILE_SOURCES"; then
   for i in "${!ADD_FILE_SOURCES[@]}"
   do
     echo "${ADD_FILE_SOURCES[$i]}"
-    cp "${ADD_FILE_SOURCES[$i]}" "$MOUNT_DIR/${ADD_FILE_TARGETS[$i]}"
+    cp -R "${ADD_FILE_SOURCES[$i]}" "$MOUNT_DIR/${ADD_FILE_TARGETS[$i]}"
   done
 fi
 
