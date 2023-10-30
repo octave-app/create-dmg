@@ -1,10 +1,10 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 """
 This script adds a license file to a DMG. Requires Xcode and a plain ascii text
 license file.
-Obviously only runs on a Mac.
+Only runs on a Mac.
 
-Copyright (C) 2011-2013 Jared Hobbs
+Copyright (C) 2011-2013 Jared Hobbs, 2019-2023 Andrew Janke
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
+
+# This should run with any standard Python 3 installation, including the one shipped
+# with macOS, so only import modules from the Python standard library; do not depend
+# on any supplemental modules.
+
 import os
 import sys
 import tempfile
@@ -125,12 +130,12 @@ data 'STR#' (5002, "English") {
                           'UDZO -imagekey zlib-devel=9 -o %s' % dmgFile)
             os.remove('%s.temp.dmg' % dmgFile)
     if ret == 0:
-        print "Successfully added license to '%s'" % dmgFile
+        print("Successfully added license to '%s'" % dmgFile)
     else:
-        print "Failed to add license to '%s'" % dmgFile
+        print("Failed to add license to '%s'" % dmgFile)
 
 if __name__ == '__main__':
-    xcode_developer = subprocess.check_output(['xcode-select', '-p']).rstrip()
+    xcode_developer = subprocess.check_output(['xcode-select', '-p']).decode().rstrip()
     parser = optparse.OptionParser()
     parser.set_usage("""%prog <dmgFile> <licenseFile> [OPTIONS]
   This program adds a software license agreement to a DMG file.
@@ -157,7 +162,7 @@ if __name__ == '__main__':
     options, args = parser.parse_args()
     cond = len(args) != 2
     if not os.path.exists(options.rez):
-        print 'Failed to find Rez at "%s"!\n' % options.rez
+        print('Failed to find Rez at "%s"!\n' % options.rez)
         cond = True
     if cond:
         parser.print_usage()

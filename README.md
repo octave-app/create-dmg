@@ -1,9 +1,9 @@
 create-dmg
 ==========
 
-A shell script to build fancy DMGs.  
+A little program to build fancy DMGs.  
 
-This is a project fork of andreyvit's create-dmg project at <https://github.com/andreyvit/create-dmg>, modified to support [Octave.app](https://github.com/octave-app)'s needs. It has diverged from upstream, and we don't expect our changes to make it back upstream, since there has been no activity on the project since 2015.
+This is a project fork of andreyvit's create-dmg project at <https://github.com/andreyvit/create-dmg>, modified to support [Octave.app](https://github.com/octave-app)'s needs. It has diverged from upstream, and we don't expect our changes to make it back upstream, since there has been no activity on the upstream project since 2015.
 
 ## Status and contribution policy
 
@@ -11,12 +11,12 @@ This project is maintained by the Octave.app group, primarily for our own intern
 
 ## Installation
 
-Create-dmg is a shell script. Simply download and run on any Mac.
+Create-dmg is a set of scripts written in shell and Python. Download it by cloning the repo or downloading a zip file from our Releases page and extracting it. Then you can run the `create-dmg` command directly from there.
 
-```shell
-git clone https://github.com/octave-app/create-dmg.git
+```text
+git clone https://github.com/octave-app/create-dmg
 cd create-dmg
-./create-dmg [options]  
+./create-dmg [options ...]
 ```  
 
 ## Usage

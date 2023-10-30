@@ -1,11 +1,14 @@
 #! /bin/bash
+#
+# Create a fancy DMG file
 
-# Create a read-only disk image of the contents of a folder
+# TODO: Figure out what our version numbering policy is, and update the version
+# accordingly, for the 2023-10 changes for Octave 8.x and macOS 12+
 
 set -e;
 
 function pure_version() {
-  echo '1.0.0.2'
+  echo '1.0.1'
 }
 
 function version() {
@@ -14,7 +17,9 @@ function version() {
 
 function usage() {
   version
+  echo
   echo "Creates a fancy DMG file."
+  echo ""
   echo "Usage:  $(basename $0) options... image.dmg source_folder"
   echo "All contents of source_folder will be copied into the disk image."
   echo "Options:"
@@ -61,6 +66,8 @@ ICON_SIZE=128
 TEXT_SIZE=16
 ADD_FILE_SOURCES=()
 ADD_FILE_TARGETS=()
+
+NOINTERNET=1
 
 while test "${1:0:1}" = "-"; do
   case $1 in
@@ -114,6 +121,9 @@ while test "${1:0:1}" = "-"; do
       shift; shift;;
     --no-internet-enable)
       NOINTERNET=1
+      shift;;
+    --internet-enable)
+      NOINTERNET=0
       shift;;
     --add-file)
       ADD_FILE_TARGETS+=("$2")
