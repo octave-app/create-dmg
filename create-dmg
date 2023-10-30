@@ -54,7 +54,7 @@ function usage() {
   echo "  --disk-image-size x"
   echo "      set the disk image size manually to x MB"
   echo "  --version         show tool version number"
-  echo "  -h, --help        display this help"
+  echo "  -h, --help, -?    display this help"
   exit 0
 }
 
@@ -105,7 +105,7 @@ while test "${1:0:1}" = "-"; do
       shift; shift;;
     --custom-icon)
       shift; shift; shift; shift; shift;;
-    -h | --help)
+    -h|--help|-?)
       usage;;
     --version)
       version; exit 0;;
